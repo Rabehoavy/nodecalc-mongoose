@@ -21,7 +21,8 @@
             <td>Nombre 2</td>
             <td>&nbsp;</td>
             <td>Résultat</td>
-            <td>&nbsp;</td>
+            <td>Action</td>
+            <td>Etat</td>
           </tr>
         </thead>
         <tbody>
@@ -37,9 +38,17 @@
                     <%= page[i].resultat %>
                 </td>
                 <td>
+                      <% if (page[i].statut === true) { %>
                     <a href="/calculer/<%= page[i]._id %>" class="btn btn-success">Calculer</a>
                     <a href="calculatrice/update/<%= page[i]._id %>" class="btn btn-info" id="modifier">Modifier</a>
-                    <a href="delete/<%= page[i]._id %>" class="btn btn-danger">Supprimer</a>
+                    <a href="delete/<%= page[i]._id %>" class="btn btn-danger" disabled="disabled">Supprimer</a>
+                    
+                </td>
+                <td>
+                    <a href="/desactiver/<%= page[i]._id %>" class="btn btn-danger">Désactiver</a>
+                      <% } else { %>
+                    <a href="/activer/<%= page[i]._id %>" class="btn btn-success">Activer</a>
+                      <% } %>
                 </td>
               </tr>
             <% } %>

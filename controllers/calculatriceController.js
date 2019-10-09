@@ -8,6 +8,7 @@ let calcSchema = new Schema({
   nombre2: Number,
   operateur: String,
   resultat: Number,
+  statut: {type: Boolean, default: true},
 });
 
 // Associe mon schéma à la variable => Operation
@@ -190,5 +191,55 @@ controller.delete = (req, res) => {
     }
   }
 };
+
+controller.activer = (req,res) => {
+  try {
+    mongoose.connect(dbUrl, {
+      useNewUrlParser: true,
+      useUnifiedTopology: true
+    });
+
+    db.on("error", console.error.bind(console, "connection error:"));
+    db.once("open", function() {
+     
+            Operation.findByIdAndUpdate(req.params.id, {
+              statut: true
+            }, (err) => {
+              if (err) throw err;
+              res.redirect("/");
+            });
+      });
+  } catch (err) {
+    if (err) {
+      console.log(err);
+      console.log("err");
+    }
+  }
+}
+
+controller.desactiver = (req,res) => {
+  try {
+    mongoose.connect(dbUrl, {
+      useNewUrlParser: true,
+      useUnifiedTopology: true
+    });
+
+    db.on("error", console.error.bind(console, "connection error:"));
+    db.once("open", function() {
+     
+            Operation.findByIdAndUpdate(req.params.id, {
+              statut: false
+            }, (err) => {
+              if (err) throw err;
+              res.redirect("/");
+            });
+      });
+  } catch (err) {
+    if (err) {
+      console.log(err);
+      console.log("err");
+    }
+  }
+}
 
 module.exports = controller;
