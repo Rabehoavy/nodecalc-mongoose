@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+ <% include partials/head %> 
+</head>
+<body>
+<% include partials/menu %>
+<div class="container-fluid bg-3 text-center">    
+  <h3><%= page %></h3><br>
+  <div class="row">
+    <div class="col-sm-4">
+      
+      
+    </div>
+    <div class="col-sm-4"> 
+      <form action="form/add" method="POST">
+          <div class="form-group">
+            <input type="number" name="nun" placeholder="Nombre 1" class="form-control" autofocus required>
+          </div>
+          <div class="form-group">
+            <input type="number" name="n2" placeholder="Nombre 2" class="form-control">
+          </div>
+
+          <button type="submit" class="btn btn-primary btn-rounded">
+            Additionner
+          </button>
+		</form>
+		<% if (addition) { %>
+				<p><%= addition %></p>
+		<% } %>
+    </div>
+    <div class="col-sm-4"> 
+      
+    </div>
+  </div>
+</div>
+</body>
+<% include partials/script %>
+</html>
