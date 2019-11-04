@@ -24,6 +24,10 @@ controller.formulaire = (req, res) => {
   res.render('calculatrice', {page:'Calculatrice', menuId:'ajouter'});
 };
 
+controller.technologie = (req, res) => {
+  res.render('technologie', {page:'technologie', menuId:'technologie'});
+};
+
 controller.list = (req, res) => {
   // Connection à ma BDD
   mongoose.connect(dbUrl, {

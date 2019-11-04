@@ -7,56 +7,47 @@
 <% include partials/menu %>
 <div class="container-fluid bg-3 text-center">    
   <div class="row">
-    <div class="col-sm-3">
+    <div class="col-sm-2">
       
       
     </div>
-    <div class="col-sm-6"> 
-      <table class="table table-bordered table-hover">
-        <thead>
-          <tr>
-            <td>n°</td>
-            <td>Nombre 1</td>
-            <td>Opérateur</td>
-            <td>Nombre 2</td>
-            <td>&nbsp;</td>
-            <td>Résultat</td>
-            <td>Action</td>
-            <td>Etat</td>
-          </tr>
-        </thead>
+    <div class="col-sm-8"> 
+      <table class="table table-bordered table-hover table-striped table-vcenter">
         <tbody>
       <% if (page) { %>
             <% for(var i = 0; i < page.length; i++) { %>
               <tr>
-                <td><%= (i + 1) %></td>
-                <td><%= page[i].nombre1 %></td>
-                <td><%= page[i].operateur %></td>
-                <td><%= page[i].nombre2 %></td>
-                <td>=</td>
-                <td>
+                <th><%= page[i].nombre1 %>
+                    <%= page[i].operateur %>
+                     <%= page[i].nombre2 %>
+                =
                     <%= page[i].resultat %>
-                </td>
-                <td>
-                      <% if (page[i].statut === true) { %>
-                    <a href="/calculer/<%= page[i]._id %>" class="btn btn-success">Calculer</a>
-                    <a href="calculatrice/update/<%= page[i]._id %>" class="btn btn-info" id="modifier">Modifier</a>
-                    <a href="delete/<%= page[i]._id %>" class="btn btn-danger" disabled="disabled">Supprimer</a>
+                </th>
+                <% if (page[i].statut === true) { %>
+                <td> 
+                    <a href="/calculer/<%= page[i]._id %>" class="btn btn-success"><i class="fas fa-calculator"></i></a>
+                    <a href="calculatrice/update/<%= page[i]._id %>" class="btn btn-info" id="modifier"><i class="fas fa-edit"></i></a>
+                    <a href="delete/<%= page[i]._id %>" class="btn btn-danger" disabled="disabled"><i class="fas fa-trash-alt"></i></a>
                     
                 </td>
                 <td>
                     <a href="/desactiver/<%= page[i]._id %>" class="btn btn-danger">Désactiver</a>
-                      <% } else { %>
-                    <a href="/activer/<%= page[i]._id %>" class="btn btn-success">Activer</a>
-                      <% } %>
                 </td>
+                <% } else { %>
+                <td>
+                  <a href="#" class="btn btn-danger" disabled="disabled">Non modifiable</a>
+                </td>
+                <td>
+                  <a href="/activer/<%= page[i]._id %>" class="btn btn-success">Activer</a>
+                </td>
+                <% } %>
               </tr>
             <% } %>
           <% } %>
 		  </tbody>
       </table>
     </div>
-    <div class="col-sm-3"> 
+    <div class="col-sm-2"> 
       
     </div>
   </div>

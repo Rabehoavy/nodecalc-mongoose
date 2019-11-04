@@ -12,6 +12,7 @@ var users = require('./routes/users');
 var form = require('./routes/form');
 var calculatrice = require('./routes/calculatrice');
 var resultat = require('./routes/resultat');
+var technologie = require('./routes/technologie');
 
 var app = express();
 
@@ -33,6 +34,7 @@ app.use('/users', users);
 app.use('/form', form);
 app.use('/calculatrice', calculatrice);
 app.use('/resultat', resultat);
+app.use('/technologie', technologie);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
